@@ -8,6 +8,45 @@ Player's bankroll goes up and down with wins and losses
 
 =end
 
+
+require_relative 'card' 
+require_relative 'dice'
+require_relative 'deck'
+require_relative 'slotmachines'
+
+require 'titleize'
+# see if each file needs a separate line once in use
+
+class Casino_welcome
+    def initialize
+        wallet = @wallet
+    end    
+end
+
+def casino_intro
+
+def greeting
+  puts "Hello! Welcome to The Silver Fox. Please enter your name to continue."
+  @name = gets.strip.titleize
+  puts "Hello #{@name}!"
+  puts "How much can you afford to lose?"
+  puts "50? 100? 1000? 10,000?"
+  greeting_options
+  menu
+end
+
+def greeting_options
+  user_input = gets.strip
+  pattern = /^(\d+\.?){1}(\d*){0,1}$/
+  if pattern.match(user_input)
+    @wallet = user_input.to_f
+    printf("Nice! You now have $%.2f to play with. Let's choose a game!\n", @wallet)
+  else
+    puts "Invalid Input! Try Again"
+    greeting_options
+  end
+end
+
 def menu
  puts "1) Play Games"
  puts "2) View Wallet"
@@ -37,8 +76,20 @@ end
 
 end
 def game_menu
- puts "Let's put some games here team!!"
 
 
  menu
 end
+
+
+def view_wallet
+    puts
+    puts "You have $#{@wallet}"
+    puts
+    menu
+end
+
+greeting
+
+
+ 
