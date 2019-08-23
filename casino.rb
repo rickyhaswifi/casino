@@ -7,6 +7,10 @@ Player places bet and wins / loses (hint: rand)
 Player's bankroll goes up and down with wins and losses
 
 =end
+
+require_relative 'card', 'dice', 'deck'
+# see if each file needs a separate line once in use
+
 def greeting
   puts "Hello! Welcome to The Hive. Please enter your name to continue."
   @name = gets.strip.titleize
@@ -51,3 +55,9 @@ def game_menu
 
  menu
 end
+
+
+
+
+
+ 
