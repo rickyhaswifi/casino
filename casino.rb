@@ -18,6 +18,7 @@ require 'titleize'
 def greeting
   puts "Hello! Welcome to The Silver Fox. Please enter your name to continue."
   @name = gets.strip.titleize
+  puts "Hello #{@name}!"
   puts "How much can you afford to lose?"
   puts "50? 100? 1000? 10,000?"
   greeting_options
