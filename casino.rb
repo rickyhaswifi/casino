@@ -22,14 +22,14 @@ def greeting
   puts "How much can you afford to lose?"
   puts "50? 100? 1000? 10,000?"
   greeting_options
-  game_menu
+  menu
 end
 
 def greeting_options
   user_input = gets.strip
-  pattern = /^\d+\.{0,1}\d*?/
+  pattern = /^(\d+\.?){1}(\d*){0,1}$/
   if pattern.match(user_input)
-    @wallet = gets.to_f
+    @wallet = user_input.to_f
     printf("Nice! You now have $%.2f to play with. Let's choose a game!\n", @wallet)
   else
     puts "Invalid Input! Try Again"
@@ -66,7 +66,6 @@ end
 
 end
 def game_menu
- puts "Let's put some games here team!!"
 
 
  menu
