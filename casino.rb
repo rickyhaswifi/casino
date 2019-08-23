@@ -8,17 +8,32 @@ Player's bankroll goes up and down with wins and losses
 
 =end
 
-require_relative 'card', 'dice', 'deck'
+
+require_relative 'card' 
+require_relative 'dice'
+require_relative 'deck'
+require 'titleize'
 # see if each file needs a separate line once in use
 
 def greeting
-  puts "Hello! Welcome to The Hive. Please enter your name to continue."
+  puts "Hello! Welcome to The Silver Fox. Please enter your name to continue."
   @name = gets.strip.titleize
   puts "How much can you afford to lose?"
   puts "50? 100? 1000? 10,000?"
-  @wallet = gets.to_f
-  printf("Nice! You now have $%.2f to play with. Let's choose a game!\n", @wallet)
+  greeting_options
   game_menu
+end
+
+def greeting_options
+  user_input = gets.strip
+  pattern = /^\d+\.{0,1}\d*?/
+  if pattern.match(user_input)
+    @wallet = gets.to_f
+    printf("Nice! You now have $%.2f to play with. Let's choose a game!\n", @wallet)
+  else
+    puts "Invalid Input! Try Again"
+    greeting_options
+  end
 end
 
 def menu
@@ -57,7 +72,7 @@ def game_menu
 end
 
 
-
+greeting
 
 
  
