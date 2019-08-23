@@ -8,8 +8,6 @@ Player's bankroll goes up and down with wins and losses
 
 =end
 
-
-
 def menu
  puts "1) Play Games"
  puts "2) View Wallet"
@@ -40,7 +38,7 @@ end
 end
 def game_menu
  puts "Let's put some games here team!!"
-    
+
 
  menu
 end
