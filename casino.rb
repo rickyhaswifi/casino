@@ -118,7 +118,17 @@ def menu_options
 end
 
 def wins_and_losses
-  puts "Wins and losses will go here!"
+  if @current_guest == nil
+    puts "Wins: #{@people[0][:wins]}"
+  else
+    puts "Wins: #{@people[@current_guest - 1][:wins]}"
+  end
+  if @current_guest == nil
+    puts "Losses: #{@people[0][:losses]}"
+  else
+    puts "Losses: #{@people[@current_guest - 1][:losses]}"
+  end 
+  separator
   menu
 end
 

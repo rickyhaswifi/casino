@@ -145,9 +145,7 @@ def raise_the_bet
     printf("The pot has been increased to $%.2f, and your new balance is $%.2f\n", @pot, @wallet)
     roll_two
   elsif user_input == 'N'
-    @wallet = @wallet - @pot
-    printf("Ok, good game! Your new balance is $%.2f. I'll see you next time!\n", @wallet)
-    menu
+    user_lose
   else
     puts "What was that? Enter 'y' for yes or 'n' for no!"
     raise_the_bet_computer_options
@@ -156,9 +154,8 @@ def raise_the_bet
 
  def computer_accept_or_reject
   if @computer_r1 + 3 < @user_r1
-    @wallet = @wallet + @pot
-    printf("I'm pulling out! You won the round!! You won $%.2f, and your new balance is $%.2f! Congratulations!", @pot, @wallet)
-    @pot = 0
+    puts "I'm pulling out!" 
+    user_win
     menu
   else
     @pot = @pot + (@user_raise * 2)
@@ -243,9 +240,8 @@ def computer_accept_or_reject_roll_two
    printf("Deal! The pot has been raised by $%.2f, and your balance in now $%.2f.\n", (@user_raise * 2), @wallet)
    roll_three
  else
-   @wallet = @wallet + @pot
-   printf("I'm pulling out! You won the round!! You won $%.2f, and your new balance is $%.2f! Congratulations!", @pot, @wallet)
-   @pot = 0
+   puts "I'm pulling out!"
+   user_win
    menu
  end
 end
@@ -258,9 +254,7 @@ def raise_the_bet_computer_options_round_two
    printf("The pot has been increased to $%.2f, and your new balance is $%.2f\n", @pot, @wallet)
    roll_three
  elsif user_input == 'N'
-   @wallet = @wallet - @pot
-   printf("Ok, good game! Your new balance is $%.2f. I'll see you next time!\n", @wallet)
-   menu
+   user_lose
  else
    puts "What was that? Enter 'y' for yes or 'n' for no!"
    raise_the_bet_computer_options_round_two
@@ -362,12 +356,17 @@ def win_assessment
 end
 
 def user_win
- puts "Congratulations, you've won!!!"
- @wallet = @wallet + @pot
- printf("You won a total of $%.2f, and your new balance is $%.2f. Let's play again soon!!\n", @pot, @wallet)
- @pot = 0
- separator
- menu
+  puts "Congratulations, you've won!!!"
+  @wallet = @wallet + @pot
+  printf("You won a total of $%.2f, and your new balance is $%.2f. Let's play again soon!!\n", @pot, @wallet)
+  @pot = 0
+  if @current_guest == nil
+    @people[0][:wins] += 1
+  else
+    @people[@current_guest - 1][:wins] += 1
+  end
+  separator
+  menu
 end
 
 def computer_win_or_tie
@@ -389,12 +388,17 @@ def computer_win_or_tie
 end
 
 def user_lose
- puts "Looks like I've one this round, better luck next time!"
- @wallet = @wallet - @pot
- printf("Your new balance is $%.2f. Let's play again soon!\n", @wallet)
- @pot = 0
- separator
- menu
+  puts "Looks like I've one this round, better luck next time!"
+  @wallet = @wallet - @pot
+  printf("Your new balance is $%.2f. Let's play again soon!\n", @wallet)
+  @pot = 0
+  if @current_guest == nil
+    @people[0][:losses] += 1
+  else
+    @people[@current_guest - 1][:losses] +=1
+  end
+  separator
+  menu
 end
 
 def tie_breaker
@@ -420,7 +424,7 @@ end
  def second_tie
   if @user_tie_breaker > @computer_tie_breaker
     user_win
-  elsif @user_tie_breaker = @computer_tie_breaker
+  elsif @user_tie_breaker == @computer_tie_breaker
     tie_breaker
   else
     user_lose
