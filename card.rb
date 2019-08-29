@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 require_relative 'deck'
 
 
+=======
+>>>>>>> ricardoUpdates
 class Card
   # Getter and Setter methods for rank, suit and color
   attr_accessor :rank, :suit, :color
@@ -11,6 +14,7 @@ class Card
     @suit = suit
     @color = color
   end
+<<<<<<< HEAD
  end
 
 # @suit = ['Spades', 'Hearts', 'Diamonds', 'Clubs']
@@ -33,3 +37,6 @@ class Card
 # end
 # puts @random_color
 
+=======
+ end
+>>>>>>> ricardoUpdates

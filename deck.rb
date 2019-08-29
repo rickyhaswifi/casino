@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 require_relative 'card'
 
 class Card
@@ -12,6 +13,8 @@ class Card
   end
  end
 
+=======
+>>>>>>> ricardoUpdates
 class Deck
   # Getter and Setter methods for rank, suit and color
   attr_accessor :cards
@@ -44,6 +47,7 @@ class Deck
        puts "#{card.rank} #{card.suit} (#{card.color})"
      end
    end
+<<<<<<< HEAD
 
  end
 
@@ -51,3 +55,6 @@ class Deck
 
 
 
+=======
+ end
+>>>>>>> ricardoUpdates
