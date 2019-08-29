@@ -47,7 +47,7 @@ PRINTING IMAGES - Anything inside EOF puts below, prints as is
 #########################################################
 
 puts <<-'EOF'
-                     
+          
 EOF
 
 EXAMPLE -

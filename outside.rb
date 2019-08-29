@@ -1,6 +1,10 @@
+require_relative 'random_events'
+
 @garage = [
     {car: 'Honda', model: 'Civic', year: 1987}
 ]  
+
+
 
 def outside_menu
   puts
@@ -28,6 +32,7 @@ def outside_menu
     puts "2) View Garage"
     puts "3) Leave"
     outside_menu_options
+    
 end
 
 
@@ -92,6 +97,7 @@ def view_garage
         puts "#{i + 1}) Car: #{@garage[i][:car]}"
         puts "Model: #{@garage[i][:model]}"
         puts "Year: #{@garage[i][:year]}"
+        random_event_1
     end
     outside_menu
 end

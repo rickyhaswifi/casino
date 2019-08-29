@@ -14,7 +14,9 @@ require_relative 'dice'
 require_relative 'deck'
 require_relative 'slots'
 require_relative 'outside'
+require_relative 'roulette'
 require_relative 'entertainment'
+require_relative 'blackjack'
 require_relative 'horse_racing'
 require 'titleize'
 require 'tty-font'
@@ -23,6 +25,7 @@ require 'tty'
 
 
 @people = []
+@garage = []
 
 def separator
   puts
@@ -71,7 +74,6 @@ def greeting_options
 end
 
 def menu
-  random_event
   puts "What would you like to do?"
   puts "(Enter a number)"
   puts "1) Play Games"
@@ -85,21 +87,6 @@ def menu
   menu_options
 end
 
-def random_event
-  @event_occur = 1 + rand(15)
-  if @event_occur == 1
-    random_event_occurs
-  else
-  end
-end
-
-def random_event_occurs
-  random = [{event: 'Your grandma called and told you that she sent all of her money to her lover overseas. She needs your help with rent. Lose $1000', money: -1000.00}, {event: 'Two drunk men get in a fight, dropping all of their money on the ground. You grab it. You got $100!', money: 100.00}, {event: 'A homeless woman asks you for $5. You feel bad, and give it to her. Lose $5.', money: 5.00}, {event: 'You get very drunk while playing slots. A hot woman hits on you. When she leaves, you realize your wallet is gone. Lose $100.', money: -100.00}]
-  r = random.sample
-  puts "#{r[:event]}"
-  @wallet = @wallet + r[:money]
-end
-
 def menu_options
  user_input = gets.strip.to_i
   case user_input
@@ -111,7 +98,7 @@ def menu_options
     entertainment_menu
   when 3
     separator
-    horse_racing_menu
+    Horse_race.new
   when 4
     separator
     view_wallet
@@ -154,11 +141,9 @@ def game_menu
   puts "(Enter a number)"    
   puts "1) Party Slots"
   puts "2) Rollin 'n Dough"
-  puts "3) Main Menu"
-  game_menu_options
-end
-
-def game_menu_options
+  puts "3) Big Boss Ross Roulette"
+  puts "4) Silverfox Blackjack"
+  puts "5) Main Menu"
   game_choice = gets.strip.to_i
   case game_choice
   when 1
@@ -169,10 +154,15 @@ def game_menu_options
     dice_game_greeting
   when 3
     separator
+    roulette_user_bet
+  when 4
+    separator
+    bj_intro
+  when 5
+    separator
     menu
   else
     puts "Sorry, I didn't catch that! What would you like to do?"
-    game_menu_options
   end
 end
 
