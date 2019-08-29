@@ -1,5 +1,5 @@
 def horse_racing_menu
-  puts "Horse racing will go here!"
+  puts "Add horse racing here"
   separator
   menu
 end

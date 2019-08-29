@@ -71,6 +71,7 @@ def greeting_options
 end
 
 def menu
+  random_event
   puts "What would you like to do?"
   puts "(Enter a number)"
   puts "1) Play Games"
@@ -82,6 +83,21 @@ def menu
   puts "7) See Wins and Losses"
   puts "8) Step Outside"
   menu_options
+end
+
+def random_event
+  @event_occur = 1 + rand(15)
+  if @event_occur == 1
+    random_event_occurs
+  else
+  end
+end
+
+def random_event_occurs
+  random = [{event: 'Your grandma called and told you that she sent all of her money to her lover overseas. She needs your help with rent. Lose $1000', money: -1000.00}, {event: 'Two drunk men get in a fight, dropping all of their money on the ground. You grab it. You got $100!', money: 100.00}, {event: 'A homeless woman asks you for $5. You feel bad, and give it to her. Lose $5.', money: 5.00}, {event: 'You get very drunk while playing slots. A hot woman hits on you. When she leaves, you realize your wallet is gone. Lose $100.', money: -100.00}]
+  r = random.sample
+  puts "#{r[:event]}"
+  @wallet = @wallet + r[:money]
 end
 
 def menu_options
@@ -139,6 +155,10 @@ def game_menu
   puts "1) Party Slots"
   puts "2) Rollin 'n Dough"
   puts "3) Main Menu"
+  game_menu_options
+end
+
+def game_menu_options
   game_choice = gets.strip.to_i
   case game_choice
   when 1
@@ -152,6 +172,7 @@ def game_menu
     menu
   else
     puts "Sorry, I didn't catch that! What would you like to do?"
+    game_menu_options
   end
 end
 
