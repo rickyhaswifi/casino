@@ -16,7 +16,6 @@ require_relative 'slots'
 require_relative 'outside'
 require_relative 'entertainment'
 require_relative 'horse_racing'
-require_relative 'hotel'
 require 'titleize'
 require 'tty-font'
 require 'colorize'
@@ -81,8 +80,7 @@ def menu
   puts "5) Add Money"
   puts "6) Withdraw Money"
   puts "7) See Wins and Losses"
-  puts "8) Visit Hotel"
-  puts "9) Step Outside"
+  puts "8) Step Outside"
   menu_options
 end
 
@@ -111,9 +109,6 @@ def menu_options
     separator
     wins_and_losses
   when 8
-    separator
-    hotel_menu
-  when 9
     separator
     outside_menu
   else
