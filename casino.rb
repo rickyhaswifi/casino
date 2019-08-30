@@ -16,7 +16,7 @@ require_relative 'slots'
 require_relative 'outside'
 require_relative 'roulette'
 require_relative 'entertainment'
-require_relative 'blackjack'
+# require_relative 'blackjack' - see blackjack.rb
 require_relative 'horse_racing'
 require 'titleize'
 require 'tty-font'
