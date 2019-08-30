@@ -157,7 +157,8 @@ def game_menu
     roulette_user_bet
   when 4
     separator
-    bj_intro
+    puts 'Dealer is on break' # see blackjack.rb - working on connecting to casino
+    menu
   when 5
     separator
     menu
